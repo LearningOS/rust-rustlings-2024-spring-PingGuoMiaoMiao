@@ -7,6 +7,7 @@
 
 
 
+
 struct ColorClassicStruct {
     // TODO: Something goes here
     red:u8,
