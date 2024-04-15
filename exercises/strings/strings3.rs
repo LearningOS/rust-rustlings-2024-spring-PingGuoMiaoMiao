@@ -21,7 +21,7 @@ fn compose_me(input: &str) -> String {
     // TODO: Add " world!" to the string! There's multiple ways to do this!
    let mut my_string = String::from(" world!");
 
-   let new_string = my_string + &input.to_string();
+   let new_string = my_string.clone() + &input.to_string();
    my_string
 }
 
@@ -34,13 +34,12 @@ fn replace_me(input: &str) -> String {
 
     
    for c in 0..input_chars.len(){
-    if c + 2 < input_chars.len() && input_chars[c] == 'c' && input_chars[c + 1] == 'a' && input_chars[c + 2] == 'r'{
-        new_string.push_str(&my_string);
-        continue
-    }
-   return Some(new_string);
+        if c + 2 < input_chars.len() && input_chars[c] == 'c' && input_chars[c + 1] == 'a' && input_chars[c + 2] == 'r'{
+            new_string.push_str(&my_string);
+            continue
+        }
    }
-   None
+   return new_string
 }
 
 #[cfg(test)]
