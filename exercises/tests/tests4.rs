@@ -30,8 +30,8 @@ mod tests {
     fn correct_width_and_height() {
         // This test should check if the rectangle is the size that we pass into its constructor
         let rect = Rectangle::new(10, 20);
-        assert_eq!(???, 10); // check width
-        assert_eq!(???, 20); // check height
+        assert_eq!(, 10); // check width
+        assert_eq!(, 20); // check height
     }
 
     #[test]
