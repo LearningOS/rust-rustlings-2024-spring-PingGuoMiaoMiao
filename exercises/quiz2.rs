@@ -22,6 +22,7 @@
 
 // I AM NOT DONE
 
+
 pub enum Command {
     Uppercase,
     Trim,
@@ -32,10 +33,10 @@ mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input:String) -> String {
+    pub fn transformer<T>(input:String) -> String {
         // TODO: Complete the output declaration!
         let mut output: String = vec![];
-        for (string, command) in input.iter() {
+        for (string, command) in input.char() {
             // TODO: Complete the function body. You can do it!
             
         }
@@ -46,8 +47,9 @@ mod my_module {
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    use create::my_module::transformer;
+    
     use super::Command;
+    use crate::my_module::transformer;
 
     #[test]
     fn it_works() {
