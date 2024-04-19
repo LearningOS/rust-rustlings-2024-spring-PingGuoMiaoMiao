@@ -1,0 +1,112 @@
+✅ variables5 pass
+✅ intro2 pass
+✅ structs3 pass
+❌ errors3 points 0/1
+✅ variables6 pass
+✅ variables1 pass
+✅ enums1 pass
+✅ functions1 pass
+✅ variables2 pass
+❌ errors4 points 0/1
+✅ enums2 pass
+❌ errors5 points 0/1
+✅ functions2 pass
+✅ variables3 pass
+✅ functions3 pass
+✅ enums3 pass
+❌ errors6 points 0/1
+✅ variables4 pass
+✅ functions4 pass
+✅ strings1 pass
+✅ generics1 pass
+✅ tests1 pass
+✅ functions5 pass
+✅ strings2 pass
+✅ generics2 pass
+✅ tests2 pass
+✅ if1 pass
+✅ strings3 pass
+✅ traits1 pass
+✅ tests3 pass
+❌ tests4 points 0/1
+✅ strings4 pass
+✅ if2 pass
+✅ modules1 pass
+✅ iterators1 pass
+✅ if3 pass
+✅ modules2 pass
+❌ traits2 points 0/1
+❌ iterators2 points 0/1
+❌ traits3 points 0/1
+✅ quiz1 pass
+✅ modules3 pass
+❌ traits4 points 0/1
+❌ traits5 points 0/1
+✅ primitive_types1 pass
+❌ iterators3 points 0/1
+❌ iterators4 points 0/1
+✅ hashmaps1 pass
+✅ primitive_types2 pass
+❌ quiz3 points 0/1
+✅ primitive_types3 pass
+❌ iterators5 points 0/1
+✅ hashmaps2 pass
+✅ lifetimes1 pass
+✅ lifetimes2 pass
+✅ primitive_types4 pass
+✅ box1 pass
+✅ hashmaps3 pass
+✅ lifetimes3 pass
+✅ primitive_types5 pass
+✅ rc1 pass
+✅ arc1 pass
+❌ quiz2 points 0/1
+✅ primitive_types6 pass
+❌ cow1 points 0/1
+✅ vecs1 pass
+✅ options1 pass
+❌ options2 points 0/1
+❌ options3 points 0/1
+✅ vecs2 pass
+✅ threads1 pass
+✅ move_semantics1 pass
+✅ errors1 pass
+❌ errors2 points 0/1
+❌ try_from_into points 0/1
+✅ move_semantics2 pass
+❌ as_ref_mut points 0/1
+✅ move_semantics3 pass
+✅ threads2 pass
+❌ tests5 points 0/1
+❌ tests6 points 0/1
+❌ threads3 points 0/1
+✅ move_semantics4 pass
+✅ clippy1 pass
+✅ macros1 pass
+✅ move_semantics5 pass
+❌ tests7 points 0/1
+✅ macros2 pass
+✅ move_semantics6 pass
+❌ tests8 points 0/1
+✅ macros3 pass
+❌ macros4 points 0/1
+✅ structs1 pass
+❌ algorithm3 points 0/1
+❌ tests9 points 0/1
+❌ clippy2 points 0/1
+✅ structs2 pass
+❌ algorithm4 points 0/1
+❌ algorithm1 points 0/1
+❌ algorithm6 points 0/1
+❌ algorithm5 points 0/1
+❌ clippy3 points 0/1
+❌ algorithm2 points 0/1
+❌ using_as points 0/1
+❌ from_into points 0/1
+❌ algorithm7 points 0/1
+❌ from_str points 0/1
+❌ algorithm8 points 0/1
+❌ algorithm9 points 0/1
+❌ algorithm10 points 0/1
+
+Points: 67/110
