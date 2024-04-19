@@ -6,7 +6,7 @@
 // I AM NOT DONE
 
 use std::sync::mpsc;
-use std::sync::Arc;
+use std::sync::{Arc,Mutex};
 use std::thread;
 use std::time::Duration;
 
@@ -38,6 +38,7 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> () {
             thread::sleep(Duration::from_secs(1));
         }
     });
+  
 
     thread::spawn(move || {
         for val in &qc2.second_half {
@@ -46,8 +47,9 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> () {
             thread::sleep(Duration::from_secs(1));
         }
     });
+  
 }
-
+    
 fn main() {
     let (tx, rx) = mpsc::channel();
     let queue = Queue::new();
