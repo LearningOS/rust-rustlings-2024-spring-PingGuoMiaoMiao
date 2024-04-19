@@ -5,8 +5,6 @@
 // Execute `rustlings hint tests4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 struct Rectangle {
     width: i32,
     height: i32
@@ -20,27 +18,38 @@ impl Rectangle {
         }
         Rectangle {width, height}
     }
+    pub fn get_width(&self) -> i32 {
+        self.width
+    }
+    pub fn get_height(&self) -> i32 {
+        self.height
+    }
+
+    
 }
 
 #[cfg(test)]
-mod tests {
+mod tests { 
     use super::*;
 
     #[test]
+
     fn correct_width_and_height() {
         // This test should check if the rectangle is the size that we pass into its constructor
         let rect = Rectangle::new(10, 20);
-        assert_eq!(, 10); // check width
-        assert_eq!(, 20); // check height
+        assert_eq!(rect.get_width(), 10); // check width
+        assert_eq!(rect.get_height(), 20); // check height
     }
 
     #[test]
+    #[should_panic(expected = "Rectangle width and height cannot be negative!")]
     fn negative_width() {
         // This test should check if program panics when we try to create rectangle with negative width
         let _rect = Rectangle::new(-10, 10);
     }
 
     #[test]
+    #[should_panic(expected = "Rectangle width and height cannot be negative!")]
     fn negative_height() {
         // This test should check if program panics when we try to create rectangle with negative height
         let _rect = Rectangle::new(10, -10);
