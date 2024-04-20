@@ -26,13 +26,14 @@ impl Queue {
     }
 }
 
-fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> (){ 
+fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> (){ 
     let qc = Arc::new(q);
     let qc1 = Arc::clone(&qc);
     let qc2 = Arc::clone(&qc);
 
     thread::spawn(move || {
-        for val in &qc1.first_half {
+        let queue = qc1.lock().unwrap();
+        for val in &queue.first_half {
             println!("sending {:?}", val);
             tx.send(*val).unwrap();
             thread::sleep(Duration::from_secs(1));
@@ -41,7 +42,8 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> (){
   
 
     thread::spawn(move || {
-        for val in &qc2.second_half {
+        let queue = qc2.lock().unwrap();
+        for val in &queue.second_half {
             println!("sending {:?}", val);
             tx.send(*val).unwrap();
             thread::sleep(Duration::from_secs(1));
@@ -52,10 +54,10 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> (){
     
 fn main() {
     let (tx, rx) = mpsc::channel();
-    let queue = Queue::new();
-    let queue_length = queue.length;
+    let queue = Arc::new(Mutex::new(Queue::new()));
+    let queue_length = queue.lock().unwrap().first_half.len() + queue.lock().unwrap().second_half.len();
 
-    send_tx(queue, tx);
+    send_tx(&queue, tx);
 
     let mut total_received: u32 = 0;
     for received in rx {
@@ -64,5 +66,5 @@ fn main() {
     }
 
     println!("total numbers received: {}", total_received);
-    assert_eq!(total_received, queue_length)
+    assert_eq!(total_received, queue_length);
 }

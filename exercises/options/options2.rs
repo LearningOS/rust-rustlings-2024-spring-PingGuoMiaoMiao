@@ -35,7 +35,7 @@ mod tests {
         // while let and if let.
         while let Some(integer) = optional_integers.pop() {
             if let Some(integer) = optional_integers{
-                assert_eq!(integer, Some(cursor));
+                assert_eq!(integer, cursor);
             }
             
             cursor -= 1;
