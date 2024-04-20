@@ -17,6 +17,7 @@ mod tests {
             assert_eq!(word, target);
         }
     }
+    
 
     #[test]
     fn layered_option() {
