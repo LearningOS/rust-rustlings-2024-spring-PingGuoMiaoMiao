@@ -27,9 +27,8 @@ impl Queue {
 }
 
 fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> (){ 
-    let qc = Arc::new(q);
-    let qc1 = Arc::clone(&qc);
-    let qc2 = Arc::clone(&qc);
+    let qc1 = Arc::clone(&q);
+    let qc2 = Arc::clone(&q);
 
     thread::spawn(move || {
         let queue = qc1.lock().unwrap();
@@ -38,7 +37,7 @@ fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> (){
             tx.send(*val).unwrap();
             thread::sleep(Duration::from_secs(1));
         }
-    });
+    }).join().unwrap();
   
 
     thread::spawn(move || {
@@ -48,7 +47,7 @@ fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> (){
             tx.send(*val).unwrap();
             thread::sleep(Duration::from_secs(1));
         }
-    });
+    }).join().unwrap();
   
 }
     
@@ -66,5 +65,5 @@ fn main() {
     }
 
     println!("total numbers received: {}", total_received);
-    assert_eq!(total_received, queue_length);
+    assert_eq!(total_received, queue_length.try_into().unwrap());
 }
