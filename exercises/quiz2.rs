@@ -20,7 +20,6 @@
 //
 // No hints this time!
 
-// I AM NOT DONE
 
 
 pub enum Command {
@@ -33,12 +32,20 @@ mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer<T>(input:String) -> String {
+    pub fn transformer(input:Vec<(String, Command)>) -> Vec<String> {
         // TODO: Complete the output declaration!
-        let mut output: String = vec![];
-        for (string, command) in input.char() {
+        let mut output = Vec::new();
+        for (string, command) in input{
             // TODO: Complete the function body. You can do it!
-            
+            let transformer_string = match command{
+               Command::Uppercase => string.to_uppercase(),
+               Command::Trim => string.trim().to_string(),
+               Command::Append(count) => {
+                let append_string = "bar".repeat(count);
+                string + &append_string
+               }
+            };
+            output.push(transformer_string);
         }
         output
     }
