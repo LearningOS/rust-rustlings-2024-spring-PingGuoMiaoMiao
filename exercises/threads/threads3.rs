@@ -6,7 +6,7 @@
 // I AM NOT DONE
 
 use std::sync::mpsc;
-use std::sync::{Arc,Mutex};
+use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
@@ -26,7 +26,7 @@ impl Queue {
     }
 }
 
-fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> (){ 
+fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> () {
     let qc1 = Arc::clone(&q);
     let qc2 = Arc::clone(&q);
 
@@ -35,10 +35,9 @@ fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> (){
         for val in &queue.first_half {
             println!("sending {:?}", val);
             tx.send(*val).unwrap();
-            thread::sleep(Duration::from_secs(1));
+            thread::sleep(Duration::from_secs(1))
         }
-    }).join().unwrap();
-  
+    });
 
     thread::spawn(move || {
         let queue = qc2.lock().unwrap();
@@ -47,19 +46,19 @@ fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> (){
             tx.send(*val).unwrap();
             thread::sleep(Duration::from_secs(1));
         }
-    }).join().unwrap();
-  
+    });
 }
-    
+
 fn main() {
     let (tx, rx) = mpsc::channel();
     let queue = Arc::new(Mutex::new(Queue::new()));
-    let queue_length = queue.lock().unwrap().first_half.len() + queue.lock().unwrap().second_half.len();
+    let queue_length =
+        queue.lock().unwrap().first_half.len() + queue.lock().unwrap().second_half.len();
 
-    send_tx(&queue, tx);
+    send_tx(&Arc::clone(&queue), tx);
 
     let mut total_received: u32 = 0;
-    for received in rx {
+    for received in rx.recv() {
         println!("Got: {}", received);
         total_received += 1;
     }
