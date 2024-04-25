@@ -68,7 +68,7 @@ impl<T> LinkedList<T> {
     }
     pub fn merge(list_a: LinkedList<T>, list_b: LinkedList<T>) -> Self {
         //TODO
-        let mut merge = LinkedList::new();
+        let mut merge:LinkedList<T> = LinkedList::new();
         let mut curr_a = list_a;
         let mut curr_b = list_b;
 
