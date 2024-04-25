@@ -1,0 +1,112 @@
+✅ functions1 pass
+✅ intro2 pass
+✅ primitive_types5 pass
+✅ strings1 pass
+✅ variables1 pass
+✅ functions2 pass
+✅ strings2 pass
+✅ primitive_types6 pass
+✅ variables2 pass
+✅ functions3 pass
+✅ strings3 pass
+✅ vecs1 pass
+✅ variables3 pass
+✅ functions4 pass
+✅ strings4 pass
+✅ variables4 pass
+✅ functions5 pass
+✅ vecs2 pass
+✅ modules1 pass
+✅ variables5 pass
+✅ if1 pass
+✅ move_semantics1 pass
+✅ modules2 pass
+✅ variables6 pass
+✅ move_semantics2 pass
+✅ modules3 pass
+✅ if2 pass
+✅ errors6 pass
+✅ move_semantics3 pass
+✅ if3 pass
+✅ hashmaps1 pass
+✅ generics1 pass
+✅ move_semantics4 pass
+✅ quiz1 pass
+✅ move_semantics5 pass
+✅ generics2 pass
+✅ hashmaps2 pass
+✅ primitive_types1 pass
+✅ move_semantics6 pass
+✅ traits1 pass
+✅ primitive_types2 pass
+✅ hashmaps3 pass
+✅ structs1 pass
+✅ primitive_types3 pass
+✅ traits2 pass
+✅ quiz2 pass
+✅ structs2 pass
+✅ primitive_types4 pass
+✅ traits3 pass
+✅ options1 pass
+✅ structs3 pass
+✅ tests3 pass
+✅ traits4 pass
+✅ enums1 pass
+✅ options2 pass
+✅ traits5 pass
+✅ tests4 pass
+✅ options3 pass
+✅ enums2 pass
+✅ iterators1 pass
+✅ quiz3 pass
+✅ errors1 pass
+✅ enums3 pass
+✅ lifetimes1 pass
+✅ iterators2 pass
+✅ lifetimes2 pass
+✅ errors2 pass
+✅ lifetimes3 pass
+✅ iterators3 pass
+✅ errors3 pass
+✅ threads1 pass
+✅ tests1 pass
+✅ errors4 pass
+✅ iterators4 pass
+✅ errors5 pass
+✅ tests2 pass
+✅ threads2 pass
+✅ iterators5 pass
+✅ as_ref_mut pass
+✅ box1 pass
+✅ tests5 pass
+✅ rc1 pass
+✅ tests6 pass
+✅ arc1 pass
+✅ cow1 pass
+✅ tests7 pass
+❌ tests9 points 0/1
+✅ tests8 pass
+❌ clippy2 points 0/1
+❌ algorithm1 points 0/1
+❌ algorithm3 points 0/1
+❌ algorithm2 points 0/1
+✅ clippy3 pass
+❌ algorithm4 points 0/1
+❌ algorithm6 points 0/1
+✅ using_as pass
+❌ algorithm5 points 0/1
+❌ algorithm7 points 0/1
+✅ from_into pass
+❌ algorithm8 points 0/1
+❌ algorithm9 points 0/1
+✅ from_str pass
+❌ algorithm10 points 0/1
+✅ macros3 pass
+❌ try_from_into points 0/1
+✅ macros4 pass
+✅ macros1 pass
+✅ macros2 pass
+✅ clippy1 pass
+✅ threads3 pass
+
+Points: 97/110
