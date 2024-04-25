@@ -3,10 +3,8 @@
 // Execute `rustlings hint threads3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 use std::sync::mpsc;
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 use std::thread;
 use std::time::Duration;
 
@@ -26,22 +24,23 @@ impl Queue {
     }
 }
 
-fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> () {
-    let qc1 = Arc::clone(&q);
-    let qc2 = Arc::clone(&q);
+fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> () {
+    let qc = Arc::new(q);
+    let qc1 = Arc::clone(&qc);
+    let qc2 = Arc::clone(&qc);
 
+    let _tx1 = mpsc::Sender::clone(&tx);
     thread::spawn(move || {
-        let queue = qc1.lock().unwrap();
-        for val in &queue.first_half {
+        for val in &qc1.first_half {
             println!("sending {:?}", val);
-            tx.send(*val).unwrap();
-            thread::sleep(Duration::from_secs(1))
+            _tx1.send(*val).unwrap();
+            thread::sleep(Duration::from_secs(1));
         }
     });
 
+    let _tx2 = mpsc::Sender::clone(&tx);
     thread::spawn(move || {
-        let queue = qc2.lock().unwrap();
-        for val in &queue.second_half {
+        for val in &qc2.second_half {
             println!("sending {:?}", val);
             tx.send(*val).unwrap();
             thread::sleep(Duration::from_secs(1));
@@ -51,18 +50,17 @@ fn send_tx(q: &Arc<Mutex<Queue>>, tx: mpsc::Sender<u32>) -> () {
 
 fn main() {
     let (tx, rx) = mpsc::channel();
-    let queue = Arc::new(Mutex::new(Queue::new()));
-    let queue_length =
-        queue.lock().unwrap().first_half.len() + queue.lock().unwrap().second_half.len();
+    let queue = Queue::new();
+    let queue_length = queue.length;
 
-    send_tx(&Arc::clone(&queue), tx);
+    send_tx(queue, tx);
 
     let mut total_received: u32 = 0;
-    for received in rx.recv() {
+    for received in rx {
         println!("Got: {}", received);
         total_received += 1;
     }
 
     println!("total numbers received: {}", total_received);
-    assert_eq!(total_received, queue_length.try_into().unwrap());
+    assert_eq!(total_received, queue_length)
 }

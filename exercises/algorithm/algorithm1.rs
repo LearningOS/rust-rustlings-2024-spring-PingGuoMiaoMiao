@@ -72,6 +72,9 @@ impl<T> LinkedList<T> {
         let mut curr_a = list_a;
         let mut curr_b = list_b;
 
+      
+
+
 
         Self {
             length: 0,
