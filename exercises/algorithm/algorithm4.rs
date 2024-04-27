@@ -51,13 +51,14 @@ where
     // Insert a value into the BST
     fn insert(&mut self, value: T) {
         //TODO
+        let node = TreeNode::new();
+        
+
     }
 
     // Search for a value in the BST
     fn search(&self, value: T) -> bool {
         //TODO
-        true
-    }
 }
 
 impl<T> TreeNode<T>

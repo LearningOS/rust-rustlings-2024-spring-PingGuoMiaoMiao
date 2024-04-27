@@ -66,7 +66,6 @@ fn bracket_match(bracket: &str) -> bool {
             _ => {}
         }
     }
-
     stack.is_empty()
 }
 
