@@ -74,6 +74,8 @@ impl<T> LinkedList<T> {
     }
 	pub fn reverse(&mut self){
 		// TODO
+        let reverse_list = LinkedList::new();
+        
 	}
 }
 
