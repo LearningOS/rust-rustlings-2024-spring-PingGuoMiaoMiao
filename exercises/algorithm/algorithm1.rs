@@ -72,10 +72,7 @@ impl<T: PartialOrd + Clone + std::cmp::PartialOrd> LinkedList<T> {
         }
     }
 
-    // 一个获取链表长度的方法
-    pub fn len(&mut self) -> i32 {
-        self.length.try_into().unwrap()  // 直接访问 length 字段
-    }
+
 
 	pub fn merge(mut list_a:LinkedList<T>,mut list_b:LinkedList<T>) -> Self {
         let mut merged_list = LinkedList::new();
