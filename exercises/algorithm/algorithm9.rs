@@ -38,6 +38,10 @@ where
 
     pub fn add(&mut self, value: T) {
         //TODO
+        self.count += 1;
+        self.items.push(value);
+        let idx = self.count;
+        self.heapify_up(idx);
     }
 
     fn parent_idx(&self, idx: usize) -> usize {
@@ -58,7 +62,15 @@ where
 
     fn smallest_child_idx(&self, idx: usize) -> usize {
         //TODO
-		0
+        let right = self.right_child_idx(idx);
+        let left = self.left_child_idx(idx);
+        if right < self.count{
+            left
+        }else if (self.comparator)(&self.items[right],&self.items[left]){
+            left
+        }else{
+            right
+        }
     }
 }
 
@@ -85,7 +97,7 @@ where
 
     fn next(&mut self) -> Option<T> {
         //TODO
-		None
+		
     }
 }
 
