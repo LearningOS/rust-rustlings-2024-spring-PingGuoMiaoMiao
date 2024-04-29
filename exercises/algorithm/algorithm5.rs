@@ -44,7 +44,7 @@ impl Graph {
                 }
             }
         }
-    
+
         visit_order
     }
 }
