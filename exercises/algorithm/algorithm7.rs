@@ -1,9 +1,9 @@
 /*
-	stack
-	This question requires you to use a stack to achieve a bracket match
+    stack
+    This question requires you to use a stack to achieve a bracket match
 */
 
-// 
+//
 #[derive(Debug)]
 struct Stack<T> {
     data: Vec<T>,
@@ -69,39 +69,38 @@ fn bracket_match(bracket: &str) -> bool {
     stack.is_empty()
 }
 
-
 #[cfg(test)]
 mod tests {
-	use super::*;
-	
-	#[test]
-	fn bracket_matching_1(){
-		let s = "(2+3){func}[abc]";
-		assert_eq!(bracket_match(s),true);
-	}
-	#[test]
-	fn bracket_matching_2(){
-		let s = "(2+3)*(3-1";
-		assert_eq!(bracket_match(s),false);
-	}
-	#[test]
-	fn bracket_matching_3(){
-		let s = "{{([])}}";
-		assert_eq!(bracket_match(s),true);
-	}
-	#[test]
-	fn bracket_matching_4(){
-		let s = "{{(}[)]}";
-		assert_eq!(bracket_match(s),false);
-	}
-	#[test]
-	fn bracket_matching_5(){
-		let s = "[[[]]]]]]]]]";
-		assert_eq!(bracket_match(s),false);
-	}
-	#[test]
-	fn bracket_matching_6(){
-		let s = "";
-		assert_eq!(bracket_match(s),true);
-	}
+    use super::*;
+
+    #[test]
+    fn bracket_matching_1() {
+        let s = "(2+3){func}[abc]";
+        assert_eq!(bracket_match(s), true);
+    }
+    #[test]
+    fn bracket_matching_2() {
+        let s = "(2+3)*(3-1";
+        assert_eq!(bracket_match(s), false);
+    }
+    #[test]
+    fn bracket_matching_3() {
+        let s = "{{([])}}";
+        assert_eq!(bracket_match(s), true);
+    }
+    #[test]
+    fn bracket_matching_4() {
+        let s = "{{(}[)]}";
+        assert_eq!(bracket_match(s), false);
+    }
+    #[test]
+    fn bracket_matching_5() {
+        let s = "[[[]]]]]]]]]";
+        assert_eq!(bracket_match(s), false);
+    }
+    #[test]
+    fn bracket_matching_6() {
+        let s = "";
+        assert_eq!(bracket_match(s), true);
+    }
 }

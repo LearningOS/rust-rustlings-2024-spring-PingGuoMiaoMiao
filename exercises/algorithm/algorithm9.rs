@@ -72,6 +72,10 @@ where
             right
         }
     }
+
+    fn heapify_up(&self, idx: usize) {
+        
+    }
 }
 
 impl<T> Heap<T>
