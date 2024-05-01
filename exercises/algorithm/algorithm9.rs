@@ -1,9 +1,3 @@
-/*
-	heap
-	This question requires you to implement a binary heap function
-*/
-// I AM NOT DONE
-
 use std::cmp::Ord;
 use std::default::Default;
 
@@ -23,7 +17,7 @@ where
     pub fn new(comparator: fn(&T, &T) -> bool) -> Self {
         Self {
             count: 0,
-            items: vec![T::default()],
+            items: Vec::new(),
             comparator,
         }
     }
@@ -37,59 +31,62 @@ where
     }
 
     pub fn add(&mut self, value: T) {
-        //TODO
         self.count += 1;
         self.items.push(value);
-        let idx = self.count;
+        let idx = self.count - 1;
         self.heapify_up(idx);
     }
 
     fn parent_idx(&self, idx: usize) -> usize {
-        idx / 2
+        (idx - 1) / 2
     }
 
     fn children_present(&self, idx: usize) -> bool {
-        self.left_child_idx(idx) <= self.count
+        self.left_child_idx(idx) < self.count
     }
 
     fn left_child_idx(&self, idx: usize) -> usize {
-        idx * 2
+        2 * idx + 1
     }
 
     fn right_child_idx(&self, idx: usize) -> usize {
-        self.left_child_idx(idx) + 1
+        2 * idx + 2
     }
 
     fn smallest_child_idx(&self, idx: usize) -> usize {
-        //TODO
-        let right = self.right_child_idx(idx);
         let left = self.left_child_idx(idx);
-        if right < self.count{
-            left
-        }else if (self.comparator)(&self.items[right],&self.items[left]){
-            left
-        }else{
+        let right = self.right_child_idx(idx);
+        if right < self.count && (self.comparator)(&self.items[right], &self.items[left]) {
             right
+        } else {
+            left
         }
     }
 
-    fn heapify_up(&self, idx: usize) {
-        
-    }
-}
+    fn heapify_up(&mut self, idx: usize) {
+        let mut current = idx;
+        let mut parent = self.parent_idx(current);
 
-impl<T> Heap<T>
-where
-    T: Default + Ord,
-{
-    /// Create a new MinHeap
-    pub fn new_min() -> Self {
-        Self::new(|a, b| a < b)
+        while current > 0 && (self.comparator)(&self.items[current], &self.items[parent]) {
+            self.items.swap(current, parent);
+            current = parent;
+            parent = self.parent_idx(current);
+        }
     }
 
-    /// Create a new MaxHeap
-    pub fn new_max() -> Self {
-        Self::new(|a, b| a > b)
+    fn heapify_down(&mut self, idx: usize) {
+        let mut current = idx;
+
+        while self.children_present(current) {
+            let smallest_child = self.smallest_child_idx(current);
+
+            if (self.comparator)(&self.items[smallest_child], &self.items[current]) {
+                self.items.swap(smallest_child, current);
+                current = smallest_child;
+            } else {
+                break;
+            }
+        }
     }
 }
 
@@ -100,15 +97,21 @@ where
     type Item = T;
 
     fn next(&mut self) -> Option<T> {
-        //TODO
-		
+        if self.is_empty() {
+            return None;
+        }
+
+        let root = self.items.swap_remove(0);
+        self.count -= 1;
+        self.heapify_down(0);
+
+        Some(root)
     }
 }
 
 pub struct MinHeap;
 
 impl MinHeap {
-    #[allow(clippy::new_ret_no_self)]
     pub fn new<T>() -> Heap<T>
     where
         T: Default + Ord,
@@ -120,7 +123,6 @@ impl MinHeap {
 pub struct MaxHeap;
 
 impl MaxHeap {
-    #[allow(clippy::new_ret_no_self)]
     pub fn new<T>() -> Heap<T>
     where
         T: Default + Ord,
@@ -132,6 +134,7 @@ impl MaxHeap {
 #[cfg(test)]
 mod tests {
     use super::*;
+
     #[test]
     fn test_empty_heap() {
         let mut heap = MaxHeap::new::<i32>();
